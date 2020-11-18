@@ -23,19 +23,19 @@ export const fetchCurrentWeatherByZip = (zip) => {
             fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=a1851b5bad4ce664b8412fcfa2c845ed`)
             .then(response => response.json())
             .then(data => dispatch(getCurrentWeatherSuccess(data)))
-            .catch(dispatch(getCurrentWeatherFailure()))
+            .catch( () => dispatch(getCurrentWeatherFailure()))
 
     }
 }
 
-export const fetchCurrentWeatherByLatLon = (lat, lon) => {
+export const fetchCurrentWeatherByLatLon = (coords) => {
     return (dispatch) => {
         dispatch(getCurrentWeather())
         return(
-            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a1851b5bad4ce664b8412fcfa2c845ed`)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[0]}&lon=${coords[1]}&appid=a1851b5bad4ce664b8412fcfa2c845ed`)
             .then(response => response.json())
             .then(data => dispatch(getCurrentWeatherSuccess(data)))
-            .catch(dispatch(getCurrentWeatherFailure()))
+            .catch( () => dispatch(getCurrentWeatherFailure()))
         )
     }
 }
@@ -63,6 +63,7 @@ export const getCurrentLatLon = () => {
                     position.coords.longitude.toFixed(4)
                 ]
                 dispatch(getCurrentLocationSuccess(coords))
+                dispatch(fetchCurrentWeatherByLatLon(coords))
             }
 
             let fail = () => {

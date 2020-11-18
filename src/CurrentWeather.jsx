@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCurrentLatLon, fetchCurrentWeatherByLatLon } from './actions/CurrentWeatherActions'
+import { getCurrentLatLon } from './actions/CurrentWeatherActions'
 
 const CurrentWeather = () => {
 
@@ -16,8 +16,6 @@ const CurrentWeather = () => {
 
     if (coordinates) {
         console.log(coordinates, "SHOWING COORDINATES")
-        dispatch(fetchCurrentWeatherByLatLon(coordinates[0], coordinates[1]))
-
         showCoordinates = (
             <div>
                 <strong>latitude: </strong>{coordinates[0]}<br />
