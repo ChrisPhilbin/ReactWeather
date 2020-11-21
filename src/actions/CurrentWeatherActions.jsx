@@ -32,7 +32,7 @@ export const fetchCurrentWeatherByLatLon = (coords) => {
     return (dispatch) => {
         dispatch(getCurrentWeather())
         return(
-            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[0]}&lon=${coords[1]}&appid=a1851b5bad4ce664b8412fcfa2c845ed`)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[0]}&lon=${coords[1]}&units=imperial&appid=a1851b5bad4ce664b8412fcfa2c845ed`)
             .then(response => response.json())
             .then(data => dispatch(getCurrentWeatherSuccess(data)))
             .catch( () => dispatch(getCurrentWeatherFailure()))

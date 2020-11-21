@@ -9,26 +9,37 @@ const CurrentWeather = () => {
     useEffect(() => {
         dispatch(getCurrentLatLon())
     }, [])
-    let coordinates = useSelector(state => state.currentWeather.coordinates)
-    // let latitude = useSelector(state => state.currentWeather.coordinates.0)
-    // let longitude = useSelector(state => state.currentWeather.coordinates[1])
-    let showCoordinates
 
-    if (coordinates) {
-        console.log(coordinates, "SHOWING COORDINATES")
-        showCoordinates = (
+    let loading             = useSelector(state => state.currentWeather.loading)
+    let errors              = useSelector(state => state.currentWeather.hasErrors)
+    let currentObservations = useSelector(state => state.currentWeather.currentConditions)
+
+    if (loading) {
+        return(
             <div>
-                <strong>latitude: </strong>{coordinates[0]}<br />
-                <strong>longitude: </strong>{coordinates[1]} 
+                <strong>Loading... Please wait a moment</strong>
+            </div>
+        )
+    } 
+    
+    if (errors) {
+        return(
+            <div>
+                <strong>Something went wrong - please try again in a moment</strong>
             </div>
         )
     }
 
-    return(
-        <>
-            {showCoordinates}
-        </>
-    )
+    if (!currentObservations) {
+        return null
+    } else {
+        return(
+        <div>
+            <h2><strong>Currently in {currentObservations.name}</strong></h2>
+            <strong>Current temperature:</strong> {Math.round(currentObservations.main.temp)}
+        </div>
+        )
+    }
 }
 
 export default CurrentWeather
