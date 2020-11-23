@@ -4,6 +4,8 @@ import { getCurrentLatLon } from './actions/CurrentWeatherActions'
 
 const CurrentWeather = () => {
 
+    console.log(process.env.REACT_APP_OPEN_WEATHER_API, "api key")
+
     let dispatch = useDispatch()
 
     useEffect(() => {
@@ -36,7 +38,10 @@ const CurrentWeather = () => {
         return(
         <div>
             <h2><strong>Currently in {currentObservations.name}</strong></h2>
-            <strong>Current temperature:</strong> {Math.round(currentObservations.main.temp)}
+            <strong>Current obsersations:</strong> {currentObservations.weather.main}<br />
+            <strong>Current temperature:</strong> {Math.round(currentObservations.main.temp)}&deg;F<br />
+            <strong>Wind speed:</strong> {Math.round(currentObservations.wind.speed)}mph<br />
+            <strong>Wind gust:</strong> {Math.round(currentObservations.wind.gust)}mph<br />
         </div>
         )
     }
