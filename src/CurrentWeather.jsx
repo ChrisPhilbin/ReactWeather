@@ -8,11 +8,8 @@ const CurrentWeather = () => {
 
     useEffect(() => {
         dispatch(getCurrentLatLon())
-    }, [])
 
-    setTimeout( () => {
-        dispatch(getCurrentLatLon())
-    }, 600000)
+    }, [])
 
     let loading             = useSelector(state => state.currentWeather.loading)
     let errors              = useSelector(state => state.currentWeather.hasErrors)
