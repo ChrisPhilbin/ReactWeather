@@ -1,6 +1,6 @@
 import * as actions from '../actions/CurrentForecastActions'
 
-export const initialState = {
+const initialState = {
     forecast: {},
     loading: false,
     hasErrors: false

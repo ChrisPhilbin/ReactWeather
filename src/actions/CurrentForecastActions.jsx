@@ -20,7 +20,7 @@ export const fetchCurrentWeeklyForecast = () => {
         return(
             fetch('https://api.weather.gov/gridpoints/PHI/51,86/forecast')
             .then(response => response.json())
-            .then(data => getCurrentWeeklyForecastSuccess(data))
+            .then(data => dispatch(getCurrentWeeklyForecastSuccess(data)))
             .catch( () => dispatch(getCurrentWeeklyForecastFailure()))
         )
     }

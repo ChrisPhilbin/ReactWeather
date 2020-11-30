@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import CurrentWeather from '../CurrentWeather'
+import WeatherIndex from '../WeatherIndex'
 
 
 const Routes = () => {
@@ -8,7 +8,7 @@ const Routes = () => {
     return(
         <Router>
             <Switch>
-                <Route path="/" exact component={CurrentWeather} />
+                <Route path="/" exact component={WeatherIndex} />
             </Switch>
         </Router>
     )

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCurrentLatLon } from './actions/CurrentWeatherActions'
-import CurrentForecast from './CurrentForecast'
 
 const CurrentWeather = () => {
 
@@ -45,7 +44,6 @@ const CurrentWeather = () => {
             <strong>Barometric pressure:</strong> {(currentObservations.main.pressure / 33.864).toFixed(2)} inches of mercury<br />
             <strong>Wind speed:</strong> {Math.round(currentObservations.wind.speed)}mph<br />
             <strong>Wind gust:</strong> {currentObservations.wind.gust?  Math.round(currentObservations.wind.gust)+'mph' : 'calm'}<br />
-            <CurrentForecast />
         </div>
         )
     }
