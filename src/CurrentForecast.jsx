@@ -4,11 +4,11 @@ import { fetchCurrentWeeklyForecast } from './actions/CurrentForecastActions'
 
 const CurrentForecast = () => {
 
-    let dispatch = useDispatch()
+    // let dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(fetchCurrentWeeklyForecast())
-    }, [])
+    // useEffect(() => {
+    //     dispatch(fetchCurrentWeeklyForecast())
+    // }, [])
 
     let loading  = useSelector(state => state.currentForecast.loading)
     let errors   = useSelector(state => state.currentForecast.hasErrors)

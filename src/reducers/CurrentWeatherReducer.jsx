@@ -1,6 +1,6 @@
 import * as actions from '../actions/CurrentWeatherActions'
 
-export const initialState = {
+export const initialWeatherState = {
     coordinates: ['0', '0'],
     currentConditions: {},
     currentForecast: {},
@@ -8,20 +8,20 @@ export const initialState = {
     hasErrors: false
 }
 
-export default function currentWeatherReducer(state = initialState, action) {
+export default function currentWeatherReducer(state = initialWeatherState, action) {
     switch (action.type) {
         case actions.GET_CURRENT_LOCATION:
-            return { ...state, loading: true, hasErrors: false }
+            return Object.assign( {}, state, { loading: true, hasErrors: false })
         case actions.GET_CURRENT_LOCATION_SUCCESS:
-            return { ...state, loading: false, hasErrors: false, coordinates: action.payload }
+            return Object.assign( {}, state, { loading: false, hasErrors: false, coordinates: action.payload })
         case actions.GET_CURRENT_LOCATION_FAILURE:
-            return { ...state, loading: false, hasErrors: true }
+            return Object.assign( {}, state, { loading: false, hasErrors: true })
         case actions.GET_CURRENT_WEATHER:
-            return { ...state, loading: true, hasErrors: false }
+            return Object.assign( {}, state, { loading: true, hasErrors: false })
         case actions.GET_CURRENT_WEATHER_SUCCESS:
-            return { ...state, loading: false, hasErrors: false, currentConditions: action.payload }
+            return Object.assign( {}. state, {loading: false, hasErrors: false, currentConditions: action.payload })
         case actions.GET_CURRENT_WEATHER_FAILURE:
-            return { ...state, loading: false, hasErrors: true }
+            return Object.assign( {}, state, { loading: false, hasErrors: true })
         default:
             return { state }
     }

@@ -4,12 +4,12 @@ import { getCurrentLatLon } from './actions/CurrentWeatherActions'
 
 const CurrentWeather = () => {
 
-    let dispatch = useDispatch()
+    // let dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(getCurrentLatLon())
+    // useEffect(() => {
+    //     dispatch(getCurrentLatLon())
 
-    }, [])
+    // }, [])
 
     let loading             = useSelector(state => state.currentWeather.loading)
     let errors              = useSelector(state => state.currentWeather.hasErrors)
