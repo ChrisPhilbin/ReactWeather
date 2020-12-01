@@ -35,7 +35,7 @@ const CurrentForecast = () => {
     } else {
         return(
             <div>
-                Current Forecast Component
+                <strong>Hello from forecast component</strong>
             </div>
         )
     }
