@@ -4,15 +4,14 @@ import { fetchCurrentWeeklyForecast } from './actions/CurrentForecastActions'
 
 const CurrentForecast = () => {
 
-    // let dispatch = useDispatch()
-
-    // useEffect(() => {
-    //     dispatch(fetchCurrentWeeklyForecast())
-    // }, [])
-
+    let dispatch = useDispatch()
     let loading  = useSelector(state => state.currentForecast.loading)
     let errors   = useSelector(state => state.currentForecast.hasErrors)
     let forecast = useSelector(state => state.currentForecast.forecast[0])
+
+    useEffect(() => {
+        dispatch(fetchCurrentWeeklyForecast())
+    },[forecast, dispatch])
 
     if (loading) {
         return(
@@ -33,12 +32,13 @@ const CurrentForecast = () => {
     if (forecast) {
         return (
             <div>
+                <h3>Detailed Forecast</h3>
                 {forecast.properties.periods.map( day => {
                     return (
-                        <>
-                        <strong>{day.name}</strong><br />
-                        {day.detailedForecast}<br />
-                        </>
+                        <div className="day" key={day.number}>
+                            <strong>{day.name}</strong> - 
+                            {day.detailedForecast}<br />
+                        </div>
                     )
                 })}
             </div>
