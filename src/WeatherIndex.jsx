@@ -10,12 +10,12 @@ import CurrentForecast from './CurrentForecast'
 
 const WeatherIndex = () => {
 
-    let dispatch = useDispatch()
+    // let dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(fetchCurrentWeeklyForecast())
-        dispatch(getCurrentLatLon())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(fetchCurrentWeeklyForecast())
+    //     dispatch(getCurrentLatLon())
+    // }, [dispatch])
 
 
     return(

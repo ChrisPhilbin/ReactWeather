@@ -4,16 +4,15 @@ import { getCurrentLatLon } from './actions/CurrentWeatherActions'
 
 const CurrentWeather = () => {
 
-    // let dispatch = useDispatch()
-
-    // useEffect(() => {
-    //     dispatch(getCurrentLatLon())
-
-    // }, [])
-
+    let dispatch = useDispatch()
     let loading             = useSelector(state => state.currentWeather.loading)
     let errors              = useSelector(state => state.currentWeather.hasErrors)
-    let currentObservations = useSelector(state => state.currentWeather.currentConditions)
+    let currentObservations = useSelector(state => state.currentWeather.currentConditions[0])
+
+    useEffect(() => {
+        dispatch(getCurrentLatLon())
+
+    },[dispatch])
 
     if (loading) {
         return(
@@ -31,9 +30,7 @@ const CurrentWeather = () => {
         )
     }
 
-    if (!currentObservations) {
-        return null
-    } else {
+    if (currentObservations) {
         return(
         <div>
             <h2><strong>Currently in {currentObservations.name}</strong></h2>
@@ -46,6 +43,8 @@ const CurrentWeather = () => {
             <strong>Wind gust:</strong> {currentObservations.wind.gust?  Math.round(currentObservations.wind.gust)+'mph' : 'calm'}<br />
         </div>
         )
+    } else {
+        return null
     }
 }
 
