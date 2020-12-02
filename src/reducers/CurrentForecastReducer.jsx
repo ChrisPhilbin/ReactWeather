@@ -1,7 +1,7 @@
 import * as actions from '../actions/CurrentForecastActions'
 
 export const initialForecastState = {
-    forecast: {},
+    forecast: [],
     loading: false,
     hasErrors: false
 }
@@ -9,10 +9,10 @@ export const initialForecastState = {
 export default function currentForecastReducer(state = initialForecastState, action) {
     switch (action.type) {
         case actions.GET_CURRENT_WEEKLY_FORECAST: {
-            return {...state, loading: true, hasErrors: false }
+            return {...state, loading: true }
         }
         case actions.GET_CURRENT_WEEKLY_FORECAST_SUCCESS: {
-            return {...state, loading: false, hasErrors: false, forecast: action.payload }
+            return {...state, loading: false, forecast: [...state.forecast, action.payload] }
         }
         case actions.GET_CURRENT_WEEKLY_FORECAST_FAILURE: {
             return {...state, loading: false, hasErrors: true }

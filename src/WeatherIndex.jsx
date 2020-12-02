@@ -15,7 +15,7 @@ const WeatherIndex = () => {
     useEffect(() => {
         dispatch(fetchCurrentWeeklyForecast())
         dispatch(getCurrentLatLon())
-    }, [])
+    }, [dispatch])
 
 
     return(

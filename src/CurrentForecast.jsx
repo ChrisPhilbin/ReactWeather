@@ -12,7 +12,7 @@ const CurrentForecast = () => {
 
     let loading  = useSelector(state => state.currentForecast.loading)
     let errors   = useSelector(state => state.currentForecast.hasErrors)
-    let forecast = useSelector(state => state.currentForecast.forecast)
+    let forecast = useSelector(state => state.currentForecast.forecast[0])
 
     if (loading) {
         return(
@@ -30,13 +30,22 @@ const CurrentForecast = () => {
         )
     }
 
-    if (!forecast) {
-        return null
+    if (forecast) {
+        return (
+            <div>
+                {forecast.properties.periods.map( day => {
+                    return (
+                        <>
+                        <strong>{day.name}</strong><br />
+                        {day.detailedForecast}<br />
+                        </>
+                    )
+                })}
+            </div>
+        )
     } else {
         return(
-            <div>
-                <strong>Hello from forecast component</strong>
-            </div>
+            null
         )
     }
 }
