@@ -33,14 +33,20 @@ const CurrentForecast = () => {
         return (
             <div>
                 <h3>Detailed Forecast</h3>
-                {forecast.properties.periods.map( day => {
-                    return (
-                        <div className="day" key={day.number}>
-                            <strong>{day.name}</strong> - 
-                            {day.detailedForecast}<br />
-                        </div>
-                    )
-                })}
+                <div className="container">
+                    <div className="row">
+                        {forecast.properties.periods.map( day => {
+                            return (
+                                <div className="col-sm-2" key={day.number}>
+                                    <p class="period-name"><strong>{day.name}</strong></p><br /><br />
+                                    <p><img src={day.icon} alt={day.shortForecast} /></p>
+                                    <p><strong>{day.temperature}&deg;F</strong></p>
+                                    {day.shortForecast}<br />
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
             </div>
         )
     } else {
