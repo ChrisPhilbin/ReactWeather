@@ -12,9 +12,20 @@ code {
     monospace;
 }
 
+.current-radar {
+  padding: 15px;
+}
+
 .current-observations {
-  background-color: rgb(199, 149, 149);
-  padding: 10px;
+  padding: 15px;
+}
+
+.forecast-container {
+  padding-bottom: 10px;
+}
+
+#forecast-image {
+  margin-bottom: 3px;
 }
 
 #lat-lon-small {

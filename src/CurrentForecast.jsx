@@ -11,7 +11,7 @@ const CurrentForecast = () => {
 
     useEffect(() => {
         dispatch(fetchCurrentWeeklyForecast())
-    },[forecast, dispatch])
+    },[dispatch])
 
     if (loading) {
         return(
@@ -32,16 +32,15 @@ const CurrentForecast = () => {
     if (forecast) {
         return (
             <div>
-                <h3>Detailed Forecast</h3>
                 <div className="container">
                     <div className="row">
-                        {forecast.properties.periods.map( day => {
+                        {forecast.map( day => {
                             return (
-                                <div className="col-sm-2" key={day.number}>
-                                    <p class="period-name"><strong>{day.name}</strong></p><br /><br />
-                                    <p><img src={day.icon} alt={day.shortForecast} /></p>
+                                <div className="col-sm-12 forecast-container" key={day.number}>
+                                    <h4><strong>{day.name}</strong></h4>
+                                    <p id="forecast-image"><img src={day.icon} alt={day.shortForecast} /></p>
                                     <p><strong>{day.temperature}&deg;F</strong></p>
-                                    {day.shortForecast}<br />
+                                    {day.detailedForecast}<br />
                                 </div>
                             )
                         })}

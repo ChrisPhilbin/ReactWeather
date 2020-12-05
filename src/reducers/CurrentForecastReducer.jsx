@@ -12,7 +12,7 @@ export default function currentForecastReducer(state = initialForecastState, act
             return {...state, loading: true }
         }
         case actions.GET_CURRENT_WEEKLY_FORECAST_SUCCESS: {
-            return {...state, loading: false, forecast: [...state.forecast, action.payload] }
+            return {...state, loading: false, forecast: [action.payload] }
         }
         case actions.GET_CURRENT_WEEKLY_FORECAST_FAILURE: {
             return {...state, loading: false, hasErrors: true }
