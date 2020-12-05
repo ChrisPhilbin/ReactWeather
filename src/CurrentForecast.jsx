@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCurrentWeeklyForecast } from './actions/CurrentForecastActions'
+import Button from 'react-bootstrap/Button'
 
 const CurrentForecast = () => {
 
@@ -13,6 +14,14 @@ const CurrentForecast = () => {
         dispatch(fetchCurrentWeeklyForecast())
     },[dispatch])
 
+    let tryAgainButton = (
+        <div className="try-again-button">
+            <Button onClick={ () => dispatch(fetchCurrentWeeklyForecast())}>
+                Try again...
+            </Button>
+        </div>
+    )
+
     if (loading) {
         return(
             <div>
@@ -24,7 +33,8 @@ const CurrentForecast = () => {
     if (errors) {
         return(
             <div>
-                Something went wrong loading the forecast data... please try again in a moment...
+                Something went wrong loading the forecast data... please try again in a moment... <br />
+                {tryAgainButton}
             </div>
         )
     }
