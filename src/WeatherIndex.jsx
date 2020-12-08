@@ -5,8 +5,9 @@ import { fetchCurrentWeeklyForecast } from './actions/CurrentForecastActions'
 import { getCurrentLatLon } from './actions/CurrentWeatherActions'
 
 
-import CurrentWeather from './CurrentWeather'
-import CurrentForecast from './CurrentForecast'
+import CurrentWeather       from './CurrentWeather'
+import CurrentForecast      from './CurrentForecast'
+import SearchCurrentWeather from './SearchCurrentWeather'
 
 const WeatherIndex = () => {
 
@@ -21,6 +22,7 @@ const WeatherIndex = () => {
     return(
         <div>
             <CurrentWeather />
+            <SearchCurrentWeather />
             <CurrentForecast />
         </div>
     )
