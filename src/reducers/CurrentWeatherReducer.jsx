@@ -18,7 +18,7 @@ export default function currentWeatherReducer(state = initialWeatherState, actio
         case actions.GET_CURRENT_WEATHER:
             return { ...state, loading: true }
         case actions.GET_CURRENT_WEATHER_SUCCESS:
-            return { ...state, loading: false, hasErrors: false, currentConditions: [...state.currentConditions, action.payload] }
+            return { ...state, loading: false, hasErrors: false, currentConditions: [action.payload] }
         case actions.GET_CURRENT_WEATHER_FAILURE:
             return { ...state, loading: false, hasErrors: true }
         default:

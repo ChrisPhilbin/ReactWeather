@@ -12,7 +12,6 @@ const SearchCurrentWeather = () => {
     let [zip, setZip] = useState('')
 
     let onLocationSubmit = (zip) => {
-        alert("clicked!")
         dispatch(fetchCurrentWeatherByZip(zip))
     }
 
