@@ -1,4 +1,4 @@
-# Time Keeper
+# React Weather
 ReactWeather is a really simple React app that utilizes Redux to manage the global state and update subscribed components accordingly based on their state changes. The app simply hits the Open Weather API to retreive the current weather conditions based on the user's current latitude and longitude, or based on a provided zip code.
 
 # Built With
