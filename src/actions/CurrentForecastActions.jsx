@@ -16,12 +16,30 @@ export const getCurrentWeeklyForecastFailure = () => (
 
 export const fetchCurrentWeeklyForecast = () => {
     return (dispatch) => {
-        dispatch(getCurrentWeeklyForecast())
-        return(
-            fetch('https://api.weather.gov/gridpoints/PHI/51,86/forecast')
-            .then(response => response.json())
-            .then(data => dispatch(getCurrentWeeklyForecastSuccess(data.properties.periods)))
-            .catch( () => dispatch(getCurrentWeeklyForecastFailure()))
-        )
+        if (navigator.geolocation) {
+            dispatch(getCurrentWeeklyForecast())
+            let success = (position) => {
+
+                let lat = position.coords.latitude.toFixed(4)
+                let lon = position.coords.longitude.toFixed(4)
+
+                fetch(`https://api.weather.gov/points/${lat},${lon}`)
+                .then(response => response.json())
+                .then(data =>
+                    fetch(data.properties.forecast)
+                    .then(response => response.json())
+                    .then(data => dispatch(getCurrentWeeklyForecastSuccess(data.properties.periods)))
+                )
+                .catch( () => dispatch(getCurrentWeeklyForecastFailure()))
+            }
+
+            let fail = () => {
+                dispatch(getCurrentWeeklyForecastFailure())
+            }
+
+            navigator.geolocation.getCurrentPosition(success, fail)
+        } else {
+            dispatch(getCurrentWeeklyForecastFailure())
+        }
     }
 }
