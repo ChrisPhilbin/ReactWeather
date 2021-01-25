@@ -11,14 +11,6 @@ import SearchCurrentWeather from './SearchCurrentWeather'
 
 const WeatherIndex = () => {
 
-    // let dispatch = useDispatch()
-
-    // useEffect(() => {
-    //     dispatch(fetchCurrentWeeklyForecast())
-    //     dispatch(getCurrentLatLon())
-    // }, [dispatch])
-
-
     return(
         <div>
             <CurrentWeather />

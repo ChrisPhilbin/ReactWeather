@@ -43,3 +43,19 @@ export const fetchCurrentWeeklyForecast = () => {
         }
     }
 }
+
+export const fetchCurrentWeeklyForecastByZip = (zip) => {
+    return (dispatch) => {
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?key=${process.env.REACT_APP_GOOGLE_API}&components=postal_code:${zip}`)
+        .then(response => response.json())
+        .then(data => 
+            fetch(`https://api.weather.gov/points/${data.results[0].geometry.location.lat},${data.results[0].geometry.location.lng}`)
+            .then(response => response.json())
+            .then(data =>
+                fetch(data.properties.forecast)
+                .then(response => response.json())
+                .then(data => dispatch(getCurrentWeeklyForecastSuccess(data.properties.periods)))
+            )
+        )
+    }
+}

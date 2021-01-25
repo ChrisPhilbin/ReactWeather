@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchCurrentWeatherByZip } from './actions/CurrentWeatherActions'
+import { fetchCurrentWeeklyForecastByZip} from './actions/CurrentForecastActions'
 
 import Button from 'react-bootstrap/Button'
-import InputGroup from 'react-bootstrap'
 
 const SearchCurrentWeather = () => {
 
@@ -13,6 +13,7 @@ const SearchCurrentWeather = () => {
 
     let onLocationSubmit = (zip) => {
         dispatch(fetchCurrentWeatherByZip(zip))
+        dispatch(fetchCurrentWeeklyForecastByZip(zip))
     }
 
     return(
