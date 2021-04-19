@@ -17,10 +17,16 @@ const SearchCurrentWeather = () => {
     }
 
     return(
-        <div className="form-group">
-            <label htmlFor="zip">Zip code</label>
-            <input type="text" id="zip" className="form-control" value={zip} onChange={ (e) => setZip(e.target.value)}/>
-            <Button onClick={ () => onLocationSubmit(zip)}>Search</Button>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-4">
+                    <div className="form-group">
+                        <label htmlFor="zip">Zip code</label>
+                        <input type="text" id="zip" className="form-control" value={zip} onChange={ (e) => setZip(e.target.value)}/>
+                        <Button onClick={ () => onLocationSubmit(zip)}>Search</Button>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 

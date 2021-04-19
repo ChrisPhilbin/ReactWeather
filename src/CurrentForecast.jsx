@@ -43,18 +43,18 @@ const CurrentForecast = () => {
         return (
             <div>
                 <div className="container">
-                    <div className="row">
-                        {forecast.map( day => {
-                            return (
-                                <div className="col-sm-12 forecast-container" key={day.number}>
+                    {forecast.map( day => {
+                        return (
+                            <div className="row">
+                                <div className="col-sm-6 forecast-container" key={day.number}>
                                     <h4><strong>{day.name}</strong></h4>
                                     <p id="forecast-image"><img src={day.icon} alt={day.shortForecast} /></p>
                                     <p><strong>{day.temperature}&deg;F</strong></p>
                                     {day.detailedForecast}<br />
                                 </div>
-                            )
-                        })}
-                    </div>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         )
